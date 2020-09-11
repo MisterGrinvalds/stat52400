@@ -2,7 +2,7 @@ library(tidyverse)
 
 # 2.27 
 A <- matrix(c(1, 2, 2, 1, -2, 2), nrow=3)
-AAt <- A %*% t(A)
+AAt <- A %*% t(A)02.R
 eigen(AAt)
 
 # 2.38

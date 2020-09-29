@@ -1,0 +1,233 @@
+\input{template_hw.tex}
+
+\begin{document}
+\maketitle	
+
+\section*{Problem 3.8}
+Define the following two matrices: 
+$$
+S_1 = \m{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1},\ 
+S_2 = \m{1 & -\frac{1}{2} & -\frac{1}{2} \\ -\frac{1}{2} & 1 & -\frac{1}{2} \\ -\frac{1}{2} & -\frac{1}{2} & 1} 
+$$
+\renewcommand{\labelenumi}{\alph{enumi})}
+\begin{enumerate}
+	\item The total variance is given by $tr(S)=\sum_{i=1}^{3}s_{ii}$. Therefore, the total variance for $S_1$ is equal to $S_2$. That is $tr(S_1) = tr(S_2) = 3$
+
+	\item The generalized variance is equal to the determinant of the sample variance-covariance matrix. In this case, $|S_1| = tr(S_1) = 3$, but $|S_2| = 1 \times (1-\frac{1}{4}) + \frac{1}{2} \times (-\frac{1}{2} - \frac{1}{4}) - \frac{1}{2} \times (\frac{1}{4} + \frac{1}{2}) = 0$. Therefore, at least one of the columns of the centered data, or deviation vectors, from the data that produced $S_2$ is a linear combination of the others. By comparison, the deviation vectors of $S_1$ are linearly independent.
+\end{enumerate}
+
+\newpage
+\section*{Problem 3.10}
+The data provided for this problem, as well as its centering, are provided below:
+$$
+\mf{X} = \m{3 & 1 & 0 \\ 6 & 4 & 6 \\ 4 & 2 & 2 \\ 7 & 0 & 3 \\ 5 & 3 & 4},\ 
+\mf{\tilde{X}} = \m{-2 & -2 & -3 \\ 1 & 2 & 3 \\ -1 & 0 & -1 \\ 2 & -2 & 0 \\ 0 & 1 & 1}
+$$
+\renewcommand{\labelenumi}{\alph{enumi})}
+\begin{enumerate}
+	\item This problem investigates a phenomenon by which the columns of $\mf{X}$ are linearly independent, but they become linearly dependent after centering. In order to show that the columns of $\mf{\tilde{X}}$ are linearly dependent, simply obtain the reduced row echelon form of the matrix.
+		$$
+		rref(\mf{\tilde{X}}) = \m{1 & 0 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0}
+		$$
+		Clearly, the rank of the column space is $2$. Therefore, at one of the columns is linearly dependent on the other. While a linear combination of deviation columns that prooves linear dependency is obvious, the algebra to obtain the combination is presented below. Let $\mf{\tilde{X}} = \m{\vec{y}_1\ \vec{y}_2}$, then the objective is to identify a vector, $\vec{a}$, such that $\mf{\tilde{X}}^{\T} \vec{a} = \vec{y}_3$.
+		\begin{align*}
+			\mf{\tilde{X}}^{\T} \vec{a} &= \vec{y}_3 \\
+			\mf{\tilde{X}}^{\T} \mf{\tilde{X}} \vec{a} &= \mf{\tilde{X}}^{\T} \vec{y}_3 \\
+			\vec{a} &= (\mf{\tilde{X}}^{\T} \mf{\tilde{X}})^{-1} \mf{\tilde{X}}^{\T} \mf{\tilde{X}} \vec{y}_3 \\
+			\therefore \vec{a} &= \m{1 \\ 1} \\
+			\implies \m{\vec{y}_1 & \vec{y}_2} \m{1 \\ 1} = \vec{y}_3
+		\end{align*}
+
+	\item 
+		$$
+		\mf{S} = \m{2.5 & 0 & 2.5 \\ 0 & 2.5 & 2.5 \\ 2.5 & 2.5 & 5.0},\ \therefore |\mf{S}| = 2.5 \times (2 \cdot 2.5^2 - 2 \cdot 2.5^2) = 0
+		$$
+
+	\item Obtaining the reduced row echelon form of the non-centered data, it is clear that the columns are linearly independent.
+		$$
+		rref(\mf{X}) = \m{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0}
+		$$
+		The rank of the column space is $3$, or full rank. This proves the independence.
+\end{enumerate}
+
+\newpage
+\section*{Problem 4.4}
+Let $\mf{X} \distras{IID} N_3 \p{\m{2 \\ -3 \\ 1}, \m{1 & 1 & 1 \\ 1 & 3 & 2 \\ 1 & 2 & 2}}$.
+\renewcommand{\labelenumi}{\alph{enumi})}
+\begin{enumerate}
+	\item Let $\mf{\tilde{X}} = 3X_1 - 2 X_2 + X_3 = \vec{a}^{\T}\mf{X},\ s.t.\ \vec{a}^{\T} = \m{3 & -2 & 1}$. Using the properties of linear combinations of random vectors, $\mf{\tilde{X}} \distras{} N_3 \p{\vec{a}^{\T} \vec{\mu}_{\mf{X}},\  \vec{a}^{\T} \Sigma_{\mf{X}}  \vec{a}}$. Then,
+		\begin{align*}
+			\vec{a}^{\T} \vec{\mu}_{\mf{X}} &= \m{3 & -2 & 1} \m{2 \\ -3 \\ 1} \\
+			&= 13
+		\end{align*}
+		\begin{align*}
+			\vec{a}^{\T} \Sigma_{\mf{X}} \vec{a} &= \m{3 & -2 & 1} \m{1 & 1 & 1 \\ 1 & 3 & 2 \\ 1 & 2 & 2} \m{3 \\ -2 \\ 1} \\
+			&= 9 \\
+		\end{align*}
+		$\therefore \mf{\tilde{X}} \distras{} N_3 \p{13,\ 9}$
+
+	\item Want $\vec{a}$ s.t. $X_2 \indep X_2 - \vec{a} \m{X_1 \\ X_3}$. Let 
+		$$
+		\mf{\tilde{X}} = \begin{bmatrix*}[c]X_2 \\ X_2 - a_1X_1 - a_2X_3\end{bmatrix*} = \mf{A} \mf{X},\ s.t.\ 
+		\mf{A} = \m{0 & 1 & 0 \\ -a_1 & 1 & -a_2}
+		$$
+		The distribution of $\mf{\tilde{X}}$ can be identified using properties of linear combinations of random variables.
+		\begin{align*}
+			\E{\mf{\tilde{X}}} &= \mf{A}\vec{\mu} \\
+			&= \m{0 & 1 & 0 \\ -a_1 & 1 & -a_2} \m{2 \\ -3 \\ 1} \\
+			&= \begin{bmatrix*}[c] -3 \\ -2a_1 -3 -a_2 \end{bmatrix*}
+		\end{align*}
+		\begin{align*}
+			\Cov{\mf{\tilde{X}}} &= \mf{A} \Sigma \mf{A}^{\T} \\
+			&= \m{0 & 1 & 0 \\ -a_1 & 1 & -a_2} \m{1 & 1 & 1 \\ 1 & 3 & 2 \\ 1 & 2 & 2} \m{0 & -a_1 \\ 1 & 1 \\ 0 & -a_2} \\
+			&= \begin{bmatrix*} 3 & -a_1 + 3 -2a_2 \\ -a_1 + 3 -2a_2 & 3 -a_1^2 - 2a_1 - 2a_1a_2 - 4a_2 - 2a_2^2 \end{bmatrix*}
+		\end{align*}
+		$\therefore X_2 \indep X_2 - \vec{a} \m{X_1 \\ X_3} \iff 3 - a_1 - 2a_2 = 0$. Then, pick any vector, $\vec{a}$, that defines such a hyperplane. For example, $\vec{a} = \m{1 \\ 1}$.
+\end{enumerate}
+
+\newpage
+\section*{Problem 4.5}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\begin{enumerate}
+	\item First, the covariance between $X_1$ and $X_2$ is $\sigma_{12} = \rho_{12} \cdot \sqrt{\sigma_{11}} \cdot \sqrt{\sigma_{22}} = \frac{1}{2} \cdot \sqrt{2} \cdot \sqrt{1} = \frac{\sqrt{2}}{2}$. Then, $\mf{X} \distras{} N_2 \p{\m{0 \\ 2}, \m{2 & \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & 1}}$. In order to obtain the conditional distribution of $X_1|X_2 = x_2$, calculate the mean and variance as follows:
+		\begin{align*}
+			\E{[X_1|X_2 = x_2]} &= \mu_1 + \frac{\sigma_{12}}{\sigma_{22}} \p{x_2 - \mu_2} \\
+			&= \frac{\sqrt{2}}{2} \p{x_2 - 2} \\
+			\\
+			\Var{[X_1|X_2 = x_2]} &= \sigma_{11} - \frac{\sigma_{12}^2}{\sigma_{22}} \\
+			&= \frac{3}{2} 
+		\end{align*}
+		$\therefore X_1|X_2 = x_2 \distras{} N \p{\frac{\sqrt{2}}{2} \p{x_2 - 2},\ \frac{3}{2}}$ 
+
+	\item[c)] Let $\mf{X} \distras{} N_3 \p{\m{2 \\ -3 \\ 1},\ \m{1 & 1 & 1 \\ 1 & 3 & 2 \\ 1 & 2 & 2}}$, and partition $\mf{X}$ as following: $\mf{X} = \m{X^{(1)} \\ X^{(2)}} = \m{X_1 \\ X_2 \\ \hline X_3}$. Then, $\mf{X} \distras{} N_3 \p{\m{\vec{\mu}^{(1)} \\ \vec{\mu}^{(2)}},\ \m{\Sigma_{(1)(1)} & \Sigma_{(1)(2)} \\ \Sigma_{(2)(1)} & \Sigma_{(2)(2)}}}$. Next, to obtain the conditional distribution of $X_3|X_1 = x_1,\ X_2 = x_2$, compute the mean and variance as follows:
+		\begin{align*}
+			\m{\Sigma_{(2)(1)} \Sigma_{(1)(1)}^{-1}} &= \m{1 & 2} \m{1 & 1 \\ 1 & 3}^{-1} \\
+			&= \m{\frac{1}{2} & \frac{1}{2}} \\
+			&= \mf{A} \\
+			\\
+			\E{[X_3|X_1 = x_1,\ X_2 = x_2]} &= \mu_3  + \mf{A}_{11} \p{x_1 - \mu_1} + \mf{A}_{12} \p{x_2 - \mu_2} \\ 
+			&= 1 + \frac{1}{2} \p{x_1 - 2} + \frac{1}{2} \p{x_2 + 3} \\
+			&= \frac{1}{2} x_1 + \frac{1}{2} x_1 + \frac{3}{2}	\\
+		\\
+			\Var{[X_3|X_1 = x_1,\ X_2 = x_2]} &= \Sigma_{(2)(2)} - \Sigma_{(2)(1)} \Sigma_{(1)(1)}^{-1} \Sigma_{(1)(2)} \\ 
+			&= 2 - \frac{1}{2} \cdot \m{1 & 2} \m{3 & -1 \\ -1 & 1} \m{1 \\ 2} \\
+			&= \frac{1}{2}
+		\end{align*}
+		$\therefore X_3|X_1 = x_1,\ X_2 = x_2 \distras{} N \p{\frac{1}{2} x_1 + \frac{1}{2} x_1 + \frac{3}{2},\ \frac{1}{2}}$ 
+
+\end{enumerate}
+
+\newpage
+\section*{Problem 4.6}
+Let $$\mf{X} \distras{} N_3 \p{\m{1 \\ -1 \\ 2}, \m{4 & 0 & -1 \\ 0 & 5 & 0 \\ -1 & 0 & 2}}$$ For each of the following combinations of random variables, determine whether or not they are independent.
+\renewcommand{\labelenumi}{\alph{enumi})}
+\begin{enumerate}
+	\item $X_1$ and $X_2$. Because $\sigma_{12} = \sigma_{21} = 0$, $\m{X_1 \\ X_2} \distras{} N_2 \p{\m{1 \\ -1},\ \m{4 & 0 \\ 0 & 5}}$. Clearly, $X_1 \indep X_2$.
+
+	\item $X_1$ and $X_3$. In a similar argument to part a), because $\sigma_{13} = \sigma_{31} \neq 0$, $X_1$ is not independent of $X_3$.
+	
+	\item $X_2$ and $X_3$. In a similar argument to part a), $\sigma_{23} = \sigma_{23} = 0 \implies X_2 \indep X_3$.
+	
+	\item $X_2$ and $\m{X_1 \\ X_3}$. Rearrange and partition the random vector as follows:
+		$$
+		\mf{X} = \m{X_2 \\ \hline X_1 \\ X_3} = \m{X^{(1)} \\ X^{(2)}}
+		$$
+		Then, the covariance matrix after rearranging is 
+		$$
+		\renewcommand{\arraystretch}{2}
+		\newcommand*{\temp}{\multicolumn{1}{r|}{}}
+		\Sigma = \left[\begin{array}{cccc} 5 & \temp & 0 & 0 \\ \cline{1-4} 0 & \temp & 4 & -1 \\ 0 & \temp & -2 & 2 \end{array}\right]
+		= \m{\Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22}}
+		$$
+		Clearly, by the partitioning, $\Sigma_{12} = \Sigma_{21}^{\T} = \m{0 & 0} \implies X_2 \indep \m{X_1 \\ X_3}$
+
+	\item $X_1$ and $X_1 + 3X_2 -2X_2$. Let $\mf{A} = \m{1 & 0 & 0 \\ 1 & 3 & -2}$. Then, to determine whether this combination of random variables is independent, use properties of linear combinations of random variables to obtain the variance-covariance matrix of the combination.
+		\begin{align*}
+			\Cov{\mf{A} \mf{X}} &= \mf{A} \Sigma \mf{A}^{\T}
+			&= \m{1 & 0 & 0 \\ 1 & 3 & -2} \m{4 & 0 & -1 \\ 0 & 5 & 0 \\ -1 & 0 & 2} \m{1 & 1 \\ 0 & 3 \\ 0 & -2}
+			&= \m{4 & 6 \\ 6 & 61}
+		\end{align*}
+		After the transformation, it is clear that $\sigma_{12} = \sigma_{21} \neq 0$. Therefore $X_1$ is not independent from $X_1 + 3X_2 -2X_2$.
+\end{enumerate}
+
+\newpage
+\section*{Problem 4.17}
+Let $X_i \distras{IID} N_p \p{\vec{\mu},\ \Sigma},\ i = 1,\ 2,\ 3,\ 4,\ 5$. Given two vectors, $\vec{a}_1 = \m{\frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}}$ and $\vec{a}_2 = \m{1 & -1 & 1 & -1 & 1}$, the mean vector and variance-covariance matrices of the transformations can be obtained via the properties of linear combinations of random variables. First, note that the joint distribution of the random vectors is easily obtained as the variables are independent and identically distributed. This distribution is given by:
+$$ \mf{X} = \m{X_1 \\ X_2 \\ X_3 \\ X_4 \\ X_5} \distras{} N_{5p} \p{\mathbf{M} = \m{\vec{\mu} \\ \vec{\mu} \\ \vec{\mu} \\ \vec{\mu} \\ \vec{\mu}},\ \mathbf{\Sigma} = \m{\Sigma & 0 & 0 & 0 & 0 \\ 0 & \Sigma & 0 & 0 & 0 \\ 0 & 0 & \Sigma & 0 & 0 \\ 0 & 0 & 0 & \Sigma & 0 \\ 0 & 0 & 0 & 0 & \Sigma}}$$
+Then,
+\begin{align*}
+	\E[\vec{a}_1^{\T} \mf{X}] &= \vec{a}_1^{\T} \mathbf{M} \\
+	&= \frac{\vec{\mu} + \ldots + \vec{\mu}}{5} \\
+	&= \vec{\mu} \\
+	\\
+	\Cov[\vec{a}_1^{\T} \mf{X}] &= \vec{a}_1^{\T} \mathbf{\Sigma} \vec{a}_1 \\
+	&= \frac{\Sigma + \ldots + \Sigma}{25} \\
+	&= \frac{1}{5} \Sigma 
+\end{align*}
+$\therefore \vec{a}_1^{\T} \mf{X} \distras{} N_p \p{\vec{\mu},\ \frac{1}{5} \Sigma} \\ \\$
+Similarly,
+\begin{align*}
+	\E[\vec{a}_2^{\T} \mf{X}] &= \vec{a}_2^{\T} \mathbf{M} \\
+	&= \vec{\mu} - \vec{\mu} + \vec{\mu} - \vec{\mu} + \vec{\mu} \\
+	&= \vec{\mu} \\
+	\\
+	\Cov[\vec{a}_2^{\T} \mf{X}] &= \vec{a}_2^{\T} \mathbf{\Sigma} \vec{a}_2 \\
+	&= \Sigma + \ldots + \Sigma \\
+	&= 5 \Sigma 
+\end{align*}
+$\therefore \vec{a}_2^{\T} \mf{X} \distras{} N_p \p{\vec{\mu},\ 5 \Sigma} \\ \\$
+The simultaneous distribution of the above linear combinations can also easily be calculated in a similar fashion:
+$$ \m{\vec{a}_1^{\T} \mf{X} \\ \vec{a}_2^{\T} \mf{X}} \distras{} N_{2p} \p{\m{\vec{a}_1^{\T} \mathbf{M} \\ \vec{a}_2^{\T} \mathbf{M}},\ \m{\vec{a}_1^{\T} \vec{a}_1 \mathbf{\Sigma} & \vec{a}_1^{\T} \vec{a}_2 \mathbf{\Sigma} \\ \vec{a}_2^{\T} \vec{a}_1 \mathbf{\Sigma} & \vec{a}_2^{\T} \vec{a}_2 \mathbf{\Sigma}}}$$
+Noting that $\vec{a}_1^{\T} \vec{a}_2 = \vec{a}_2^{\T} \vec{a}_1  \frac{1}{5}$, the distribution is thus:
+$$ \m{\vec{a}_1^{\T} \mf{X} \\ \vec{a}_2^{\T} \mf{X}} \distras{} N_{2p} \p{\m{\vec{\mu} \\ \vec{\mu}},\ \m{\frac{1}{5} \Sigma & \frac{1}{5} \Sigma \\ \frac{1}{5} \Sigma & 5 \Sigma}}$$
+
+\newpage
+\section*{Problem 4.18}
+Find the maximum likelihood estimators, MLEs, of the multivariate normal parameters $\vec{\mu}$ and $\Sigma$ from the given sample: $$\mf{X} = \m{3 & 6 \\ 4 & 4 \\ 5 & 7 \\ 4 & 7}$$ The MLEs of the two parameters are known to be the sample mean vector and the adjusted (or not adjusted depending on definition used) sample variance-covariance matrix. The sample mean vector is needed for the sample variance-covariance matrix, so it should be calculated first.
+\begin{align*}
+	\hat{\vec{\mu}}_{MLE} &= \bar{\vec{x}} \\
+	&= \m{\bar{x}_1 \\ \bar{x}_2} \\
+	&= \m{\frac{3 + 4 + 5 + 4}{4} \\ \frac{6 + 4 + 7 + 7}{4}} \\
+	&= \m{4 \\ 6}
+\end{align*}
+Once the sample mean vector is obtained, next the sample variance-covariance matrix can be calculated and adjusted to obtain the MLE.
+\begin{align*}
+	\hat{\Sigma}_{MLE} &= \frac{n-1}{n} \mf{S} \\
+	&=\frac{1}{4} \sum_{i = 1}^{4}\p{\vec{x}_i - \hat{\vec{x}}}\p{\vec{x}_i - \hat{\vec{x}}}^{\T} \\
+	\\
+	\mf{S} &= \frac{1}{3}\p{\m{1 & 0 \\ 0 & 0} + \m{0 & 0 \\ 0 & 4} + \m{1 & 1 \\ 1 & 1} + \m{0 & 0 \\ 0 & 1}} \\
+	&= \frac{1}{3} \m{2 & 1 \\ 1 & 6} \\
+\end{align*}
+$$\therefore \hat{\Sigma}_{MLE} = \frac{1}{4} \m{2 & 1 \\ 1 & 6}$$
+
+\newpage
+\section*{Problem 4.21}
+Let $X_1, \ldots, X_{60} \distras{IID} N_4 \p{\vec{\mu}, \Sigma}$. For each of the following, specify the distribution obtained from the operation on the data.
+\renewcommand{\labelenumi}{\alph{enumi})}
+\begin{enumerate}
+	\item For $\bar{\mf{X}}$:
+		\begin{align*}
+			\bar{\mf{X}} &= \frac{1}{60} \sum_{i = 1}^{60} X_i \\
+			\\
+			\E[\bar{\mf{X}}] &= \frac{1}{60} \sum_{i = 1}^{60} \E[X_i] \\
+			&= \vec{\mu} \\
+			\\
+			\Var[\bar{\mf{X}}] &= \frac{1}{3600} \sum_{i = 1}^{60} \Var[X_i] \\
+			&= \frac{1}{60} \Sigma
+		\end{align*}
+		$\therefore \bar{\mf{X}} \distras{} N_4 \p{\vec{\mu}, \frac{1}{60} \Sigma}$
+
+	\item For $\p{X_1 - \vec{\mu}}^{\T} \Sigma^{-1} \p{X_1 - \vec{\mu}}$, first let $Y_i = \Sigma^{-\frac{1}{2}} \p{X_i - \vec{\mu}}$. Then, $Y_i \distras{} N_4 \p{\vec{\mu} - \vec{\mu},\ \Sigma^{-\frac{1}{2}} \Sigma \Sigma^{-\frac{1}{2}}} = N_4 \p{\vec{0},\ \mf{I}_4}$. It follows that,
+		\begin{align*}
+			Y_i^{\T} Y_i &= \p{\vec{x}_i - \vec{\mu}}^{\T} \Sigma^{-1} \p{\vec{x}_i - \vec{\mu}} \\
+			&= \sum_{i = 4}^{4} y_i^2
+		\end{align*}
+		$\therefore Y_i^{\T} Y_i \distras{} \mathcal{X}^2(4)$
+
+	\item For $n \p{\bar{\mf{X}} - \vec{\mu}}^{\T} \Sigma^{-1} \p{\bar{\mf{X}} - \vec{\mu}}$, first let $$Y_i = \sqrt{60} \cdot \Sigma^{-\frac{1}{2}} \p{\bar{X} - \vec{\mu}}$$Then, $Y_i \distras{} N_4 \p{\bar{X} - \vec{\mu},\ \frac{\sqrt{60} \cdot \sqrt{60}}{60} \Sigma^{-\frac{1}{2}} \Sigma \Sigma^{-\frac{1}{2}}} = N_4 \p{\vec{0},\ \mf{I}_4}$. Therefore, the answer is the same as for part b). That is, $Y_i^{\T} Y_i \distras{} \mathcal{X}^2(4)$.
+	
+	\item For $n \p{\bar{\mf{X}} - \vec{\mu}}^{\T} \mf{S}^{-1} \p{\bar{\mf{X}} - \vec{\mu}}$, the use of Slutsky's Theorem and the Central Limit Theorem allow for the same solution provided in part c). Because we know that $\mf{S} \xrightarrow{n \to \infty} \Sigma$ by the CLT, the approximate distribution tends toward the same distribution in c) by Slutsky's Theorem.
+
+\end{enumerate}
+
+\end{document}

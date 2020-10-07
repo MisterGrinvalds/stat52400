@@ -1,0 +1,88 @@
+\documentclass[oneside,12pt,letterpaper]{article}
+
+% Imports and Definitions
+%% Packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{arydshln}
+\usepackage{color}
+\usepackage{extramarks}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{mathtools}
+
+%% Commands
+%%% Metadata
+\newcommand{\metaTitle}{Assignment 3}
+\newcommand{\metaDueDate}{October 6, 2020}
+\newcommand{\metaSchool}{IUPUI}
+\newcommand{\metaClass}{STAT 52400}
+\newcommand{\metaClassInstructor}{Dr. Fang Li}
+\newcommand{\metaAuthorName}{Ross Grinvalds}
+
+%%% Aliases
+\newcommand{\Bias}{\mathrm{Bias}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\dd}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+	\newcommand{\pdd}[2]{\frac{\partial}{\partial #1} (#2)}
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\m}[1]{\begin{bmatrix*}[r]#1\end{bmatrix*}}
+\newcommand{\mf}[1]{\mathrm{\bf{#1}}}
+\newcommand{\p}[1]{\begin{pmatrix}#1\end{pmatrix}} 
+\newcommand{\solution}{\textbf{\large Solution}}
+\newcommand{\T}{\intercal}
+\newcommand{\Var}{\mathrm{Var}}
+
+%%% Math Functions
+\makeatletter
+\newsavebox{\mybox}\newsavebox{\mysim}
+\newcommand{\distras}[1]{%
+  \savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+  \savebox{\mysim}{\hbox{$\sim$}}%
+  \mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\makeatother
+
+\newcommand{\indep}{\perp \!\!\! \perp}
+
+%% Environments
+%%% R Code
+\newcommand{\ri}[1]{\lstinline{#1}}  %% Short for 'R inline'
+
+\lstnewenvironment{rc}[1][]{
+	\lstset{commentstyle=\color{red}, keywordstyle=\color{black}, showstringspaces=true, language=R, basicstyle=\ttfamily\tiny}
+}{}
+\lstset{language=R}
+
+
+% Settings
+%% Document-wide
+\pagestyle{fancy}
+
+%% Header and Footer
+\setlength{\headheight}{15pt}
+\lhead{\metaAuthorName}
+\chead{\metaSchool\ \metaClass:\ \metaTitle}
+\rhead{\metaClassInstructor}
+\cfoot{\thepage}
+
+%% Title Page
+\title{
+	\vspace{1in}
+	\textmd{\textbf{\metaSchool\ \metaClass:\ \metaTitle}}\\
+	\normalsize\vspace{0.1in}\small{Due\ on\ \metaDueDate\ at 11:59 PM}\\
+	\vspace{6in}
+}
+\author{\metaAuthorName}
+\date{}

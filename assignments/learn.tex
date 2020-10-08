@@ -1,0 +1,72 @@
+% STYLE SUGGESTIONS
+%
+% When showing steps in computations, line up equal signs vertically, one per line.
+% Indent your code to make it more readable (and editable).
+% Show relevant (calculus & diffeg) steps.
+% Interpret solution and steps in context of the problem & class.
+% Communicate your thought process so the reader does not have to assume or guess at what you think.
+%
+
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\begin{document}
+\title{Assignment 01}
+\author{Ross Grinvalds}
+\maketitle
+
+Hello world!
+
+\begin{enumerate}
+	\item item one
+
+	\item item two
+
+	\begin{enumerate}
+		\item[69.] best sublist
+		
+		\item[420.] ever.
+	
+	\end{enumerate}
+
+	\item some math $x^{420}_{69}$
+	
+	\item
+		\begin{align}
+			0  &= x + y \\
+				 &= soup  \label{soup} \\
+				 &= s(oup) \label{soup_factor} \\
+				 & \therefore \\
+			soup	&= tonuts
+		\end{align}
+	
+	\item In step (\ref{soup}), ...
+
+	\item[a.]
+		\begin{align*}
+			y &= P^\intercal{}e_i \\
+			&=\lambda_i
+		\end{align*}
+
+	\item[matrix example:]
+		$\begin{bmatrix}
+			1 & 2 & 3 \\
+			a & b & c \\
+		\end{bmatrix}$
+		$$\int_{a}^{x}g(x)dt$$
+
+	\item[table example:] Let's take the function $f(x) = \sqrt{x^2 + 1}$ and make a table of values.
+		\begin{tabular}{r|cccc}
+			$x$ & -1 & 0 & 1 & 2 \\
+			\hline
+			$f(x)$ & $\sqrt{2}$ & 1 & $\sqrt{2}$ & $\sqrt{5}$
+		\end{tabular}
+
+\end{enumerate}
+
+\includegraphics{01/plots/Rplot.png}
+\
+\end{document}

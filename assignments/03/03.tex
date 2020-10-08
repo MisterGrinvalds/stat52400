@@ -6,7 +6,7 @@
 \section*{Problem 4.28}
 The air pollution data from Table 1.5 was imported into R using the `tidyverse` library. This question focuses on a univariate normality assessment of the solar radiation measurements contained in the dataset. The quantile-quantile plot is shown below. The plot demonstrates a deviation in the left tail of the distribution from normality. This suggests that solar radiation may not be normally distributed.
 \begin{center}
-	\includegraphics[width=4in]{plot4_28_qq.png}
+	\includegraphics[width=4in]{plot_4_28_qq.png}
 \end{center}
 A formal test for the normality of this variable can be conducted via a normal quantile statistic. The statistic is defined as follows: $$r_Q = \frac{\sum_{j = 1}^{40} \p{x_{(j)} - \bar{x}} \p{q_{(j)} - \bar{q}}}{\sqrt{\sum_{j = 1}^{40} \p{x_{(j)} - \bar{x}}^2} \sqrt{\sum_{j = 1}^{40} \p{q_{(j)} - \bar{q}}^2}} = \frac{SS_{xq}}{\sqrt{SS_x} \sqrt{SS_q}}$$ The requisite quantities were computed in R as $SS_{xq} = 686.8434$, $SS_x = 12321.14$, and $SS_q = 40.74975$. The resulting test statistic is $r_Q = 0.9693258$. Using the critical values from table 4.2 in Johnson and Wichern, the assumption of normality of solar radiation should be rejected if $r_Q < 0.9726$ for sample size $n = 40$ and confidence level $\alpha = 0.05$ (181). Therefore, the null hypothesis should be rejected. That is, the evidence suggests the data is not normally distributed.
 
@@ -18,19 +18,19 @@ This problem provides further analysis on the air pollution data from Table 1.5,
 \begin{figure}[H]
 \begin{subfigure}{.33\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X1hist.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X1hist.png}
   \caption{histogram}
   \label{fig:sfig1}
 \end{subfigure}%
 \begin{subfigure}{.33\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X1qq.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X1qq.png}
   \caption{quantile-quantile plot}
   \label{fig:sfig2}
 \end{subfigure}
 \begin{subfigure}{.33\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X1bxcx.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X1bxcx.png}
   \caption{Box-Cox likelihood}
   \label{fig:sfig3}
 \end{subfigure}%
@@ -61,13 +61,13 @@ As a remedy for the nonnormality of the data, an ideal transformation was identi
 \begin{figure}[H]
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X1newhist.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X1newhist.png}
   \caption{histogram}
   \label{fig:sfig1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X1newqq.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X1newqq.png}
   \caption{quantile-quantile plot}
   \label{fig:sfig2}
 \end{subfigure}
@@ -77,19 +77,19 @@ Similarly, a univariate analysis of $X_2$ was performed. The analysis was simila
 \begin{figure}[H]
 \begin{subfigure}{.33\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X2hist.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X2hist.png}
   \caption{histogram}
   \label{fig:sfig1}
 \end{subfigure}%
 \begin{subfigure}{.33\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X2qq.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X2qq.png}
   \caption{quantile-quantile plot}
   \label{fig:sfig2}
 \end{subfigure}
 \begin{subfigure}{.33\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X2bxcx.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X2bxcx.png}
   \caption{Box-Cox likelihood}
   \label{fig:sfig3}
 \end{subfigure}%
@@ -119,13 +119,13 @@ alternative hypothesis: df[[var]] differs from a Normal distribution
 \begin{figure}[H]
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X2newhist.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X2newhist.png}
   \caption{histogram}
   \label{fig:sfig1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X2newqq.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X2newqq.png}
   \caption{quantile-quantile plot}
   \label{fig:sfig2}
 \end{subfigure}
@@ -135,13 +135,13 @@ Overall, the spread of the data seems to have greatly improved. This is evident 
 \begin{figure}[H]
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X1X2scatter.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X1X2scatter.png}
   \caption{before transformation}
   \label{fig:sfig1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.X1X2newscatter.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_X1X2newscatter.png}
   \caption{after transformation}
   \label{fig:sfig2}
 \end{subfigure}
@@ -171,13 +171,13 @@ Overall, the spread of the data seems to have greatly improved. This is evident 
 \begin{figure}[H]
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.8\linewidth]{plot4.29.b.ellipse.png}
+  \includegraphics[width=.8\linewidth]{plot_4_29_b_ellipse.png}
   \caption{before transformation}
   \label{fig:sfig1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.29.b.ellipsenew.png}
+	\includegraphics[width=.8\linewidth]{plot_4_29_b_ellipsenew.png}
   \caption{after transformation}
   \label{fig:sfig2}
 \end{subfigure}
@@ -188,13 +188,13 @@ Overall, the spread of the data seems to have greatly improved. This is evident 
 \begin{figure}[H]
 \begin{subfigure}{.5\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.29.c.png}
+	\includegraphics[width=.8\linewidth]{plot_4_29_c.png}
   \caption{before transformation}
   \label{fig:sfig1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.29.cnew.png}
+	\includegraphics[width=.8\linewidth]{plot_4_29_cnew.png}
   \caption{after transformation}
   \label{fig:sfig2}
 \end{subfigure}
@@ -212,19 +212,19 @@ This problem focuses on the used car data presented in Exercise 1.2. This is a b
 \begin{figure}[H]
 \begin{subfigure}{.33\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.30.a.qq.png}
+	\includegraphics[width=.8\linewidth]{plot_4_30_a_qq.png}
   \caption{quantile-quantile plot before transformation}
   \label{fig:sfig1}
 \end{subfigure}%
 \begin{subfigure}{.33\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.30.a.bxcx.png}
+	\includegraphics[width=.8\linewidth]{plot_4_30_a_bxcx.png}
   \caption{Box-Cox likelihood}
   \label{fig:sfig2}
 \end{subfigure}
 \begin{subfigure}{.33\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.30.a.qqnew.png}
+	\includegraphics[width=.8\linewidth]{plot_4_30_a_qqnew.png}
   \caption{quantile-quantile plot after transformation}
   \label{fig:sfig2}
 \end{subfigure}
@@ -235,19 +235,19 @@ This problem focuses on the used car data presented in Exercise 1.2. This is a b
 \begin{figure}[H]
 \begin{subfigure}{.33\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.30.b.qq.png}
+	\includegraphics[width=.8\linewidth]{plot_4_30_b_qq.png}
   \caption{quantile-quantile plot before transformation}
   \label{fig:sfig1}
 \end{subfigure}%
 \begin{subfigure}{.33\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.30.b.bxcx.png}
+	\includegraphics[width=.8\linewidth]{plot_4_30_b_bxcx.png}
   \caption{Box-Cox likelihood}
   \label{fig:sfig2}
 \end{subfigure}
 \begin{subfigure}{.33\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.30.b.qqnew.png}
+	\includegraphics[width=.8\linewidth]{plot_4_30_b_qqnew.png}
   \caption{quantile-quantile plot after transformation}
   \label{fig:sfig2}
 \end{subfigure}
@@ -260,13 +260,13 @@ This problem focuses on the used car data presented in Exercise 1.2. This is a b
 \begin{figure}[H]
 \begin{subfigure}{.5\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.30.c.contour.png}
+	\includegraphics[width=.8\linewidth]{plot_4_30_c_contour.png}
 	\caption{Contour plot of the bivariate likelihood function.}
   \label{fig:sfig1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-	\includegraphics[width=.8\linewidth]{plot4.30.c.manifold.png}
+	\includegraphics[width=.8\linewidth]{plot_4_30_c_manifold.png}
   \caption{Three dimensional manifold representing the optimization surface.}
   \label{fig:sfig2}
 \end{subfigure}

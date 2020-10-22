@@ -1,0 +1,75 @@
+\input{preamble.tex}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 6.5} 
+A researcher considered three indices measuring the severity of heart attacks. The values of these indices for $n=40$ heart-attack patients arriving at a hospital emergency room produced the summary statistics: $$\bar{\bf{x}}=\m{46.1\\57.3\\50.4},\ \mf{S}=\m{101.3&63.0&71.0\\63.0&80.2&55.6\\71.0&55.6&97.4}$$
+
+\begin{enumerate}
+\item[\bf{a)}] 
+Based on the reported statistics above, form the following hypotheses in order to test for equality among all three mean health indices: $$H_0:\ \mu_1=\mu_2=\mu_3,\ H_a:\ \mu_i \neq \mu_j\ for\ some\ i \neq j,\ i,j=1, 2, 3$$ These hypotheses can be tested by forming a contrast matrix that compares two of the three possible pairs of means. For example, of the following contrast vectors: $$\vec{c}_1 = \m{1\\-1\\0},\ \vec{c}_2 = \m{0\\1\\-1},\ \vec{c}_3 = \m{1\\0\\-1}$$ Which test compare $\mu_1 - \mu_2$, $\mu_2 - \mu_3$, and $\mu_1 - \mu_3$, respectively. \\
+\\
+A contrast matrix can be formed by selecting any of these two vectors to form the rows of the matrix. The third vector will always be redundant as it can be composed from the remaining vectors. This will provide a matrix of rank $3 - 1 = 2$ to utilize in the test. For this problem, for example, let $\mf{C}$ be: $$\mf{C}=\m{1&-1&0\\0&1&-1}$$ The Hotelling's $T^2$ test statistic is thus defined as $$T^2=n \cdot \p{\mf{C}\bar{\bf{x}}} \p{\mf{C}\mf{S}\mf{C'}}^{-1} \p{\mf{C}\bar{\bf{x}}}'$$ Substituting the values defined above and calculating the statistic in R, the computed statistic is $T^2_{obs}=90.494$. Comparing this to the adjusted critical value of the reference distribution given a confidence level of $\alpha = 0.05$, the null hypothesis should be rejected if it exceeds $\frac{(n-1)(p-1)}{(n-p+1}F_{p-1,n-p+1}^*(1-\alpha) = \frac{78}{38} \cdot F_{2,\ 38}^*(0.95) = 6.660$. Therefore, based on the observed test statistic, it is suggested that at least one pair of means that is not equal.
+
+\item[\bf{b)}] 
+	After concluding that at least one pair of means is not equal, it is desirable to identify exactly which pairs are not equal. Simultaneous confidence intervals for each of the three pairs of means provide this information. A confidence interval for one contrast is defined as: $$\vec{c}_j^{\ '}\bar{\bf{x}} \pm \sqrt{\frac{(n-1)(p-1)}{(n-p+1)} \cdot F_{p-1,n-p+1}^*(1-\alpha)} \cdot \sqrt{\vec{c}^{\ '}\mf{S}\vec{c}_j}$$ The confidence intervals were computed in R; the output is next provided:
+\begin{rc}
+	> SCI
+	.          LCL       UCL
+	c_1 -14.239955 -8.160045
+	c_2  -7.372644 -1.227356
+	c_3   3.574900 10.225100
+	
+	> C
+	.    [,1] [,2] [,3]
+	c_1    1   -1    0
+	c_2    1    0   -1
+	c_3    0    1   -1
+\end{rc}
+These confidence intervals compare the difference of means for each of the three pairs. If the interval includes zero, it suggests that there is no clear statistical difference between the means. Clearly, each of the three pairs does not include zero, therefore it is suggested that all three of the means are different from one another.
+
+\end{enumerate}
+
+
+\newpage
+\section*{Problem 6.8} 
+Observations on two responses are collected for three treatments. The observation vectors $\m{x_1 \\ x_2}$ are: 
+	\begin{align*}
+		&Treatment\ 1:\ \m{6\\7},\ \m{5\\9},\ \m{8\\6},\ \m{4\\9},\ \m{7\\9} \\
+		\\
+		&Treatment\ 2:\ \m{3\\3},\ \m{1\\6},\ \m{2\\3} \\
+		\\
+		&Treatment\ 3:\ \m{2\\3},\ \m{5\\1},\ \m{3\\1},\ \m{2\\3}:
+	\end{align*}
+
+\begin{enumerate}
+\item[\bf{a)}]	
+The observations shown above can be decomposed into the form: $(observed) = (mean) + (treatment\ effect) + (residual)$. The observations above are decomposed as follows. First, for the first variable, $X_1$: $$\m{6&5&8&4&7\\3&1&2\\2&5&3&2} = \m{4&4&4&4&4\\4&4&4&&\\4&4&4&4&} + \m{2&2&2&2&2\\-2&-2&-2&&\\-1&-1&-1&-1&} + \m{0&-1&2&-2&1\\1&-1&0&&\\-1&2&0&-1&}$$ And for $X_2$: $$\m{7&9&6&9&9\\3&6&3&&\\3&1&1&3&} = \m{5&5&5&5&5\\5&5&5&&\\5&5&5&5&} + \m{3&3&3&3&3\\-1&-1&-1&&\\-3&-3&-3&-3&} + \m{-1&1&-2&1&1\\-1&2&-1&&\\1&-1&-1&1&}$$
+
+\item[\bf{b)}] 
+A continuation of the analysis of the observations next leads to a one-way multivariate analysis of variance, or MANOVA. As in the univariate case, the decomposition of the sources of variance can be provided as a table to facilitate in the analysis. The MANOVA table is next presented:
+	\begin{center}
+	\begin{tabular}{|c c c |} 
+		\hline
+		Source of Variation & Matrix SSCP & degrees of freedom \\
+		\hline
+		&&\\
+		Treatment & $\mf{B} = \m{36&48\\48&36}$ & $9$ \\
+		&&\\
+		Residual & $\mf{W} = \m{18&-13\\-13&18}$ & $2$ \\
+		&&\\
+		\hline
+		Total (corrected) & $\mf{T} = \m{54&35\\35&102}$ & $11$ \\
+		\hline
+	\end{tabular}
+	\end{center}
+
+\item[\bf{c)}] 
+	A formal statistical test can be performed via the MANOVA results. The null hypothesis for the test is that all group means are equal. First, compute Wilk's Lambda, $\Lambda^*$: $$\Lambda^* = \frac{\md{\mf{W}}}{\md{\mf{B}+\mf{W}}}=0.03618$$ Next, using Wilk's Lambda, the following statistic is computed: $$\p{\frac{N-g-1}{g-1}} \cdot \p{\frac{1-\sqrt{\Lambda^*}}{\sqrt{\Lambda^*}}} = \frac{8}{2} \cdot \frac{1-\sqrt{0.03618}}{\sqrt{0.03618}} = 17.053$$ Where $N$ represents the total number of observations, $g$ represents the total number of groups being compared, and $p$ represents the number of variables. This test specifies an exact distribution for the test statistic. This exact distribution and the critical value given a confidence level of $\alpha = 0.01$ are: $$F_{2(g-1),\ 2(N-g-1)}^*(1-\alpha) = F_{4,\ 8}^*(0.99) =4.7726$$ Therefore, given our observed test statistic exceeds the critical value of the test, there is sufficient evidence to reject the null hypothesis. This suggests that at least one pair of means is significantly different from one another.\\
+\\
+The test that was just performed defines an exact distribution and can be used with small sample sizes. However, if a sufficiently large sample is obtained, the distribution will converge to a $\mathcal{X}_{p(g-1)}^2$ distribution. The statistic is also adjusted for the large sample version of the test as follows: $$-\p{N - 1 - \frac{p+g}{2}} \cdot ln\p{\Lambda^*} = -\p{11 - \frac{5}{2}} \cdot ln\p{0.03618} = 28.211$$ The critical value of the test is: $${\mathcal{X}_{4}^2}^*(0.99) = 13.277$$ The results for the large sample approximation conclude the same as in the small sample version. That is, the null hypothesis should be rejected, there is evidence that at least one pair of means is not equal.
+
+\end{enumerate}
+
+\end{document}
